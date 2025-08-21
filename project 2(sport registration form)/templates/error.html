@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>ERROR </h1>
+    {{ message}}
+
+    {% if message == "Name missing." or message == "Sport missing" %}
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9IUsEJnumAe1mtHR9xldEGRYtz7DsyS2Tug&s" alt="YOUR BAD ">
+    {% elif message == "Invalid sport selected." %}
+        <img src="https://cdn-useast1.kapwing.com/static/templates/devastated-wet-cat-meme-maker-full-4f71f324.webp" alt="YOUR BAD ">
+    {% else %}
+        no match found
+    {% endif %}
+    <a href="/">Go back to registration</a>
+</body>
+</html>
