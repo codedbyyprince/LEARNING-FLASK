@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>data of registraint</title>
 </head>
+
 <body>
-    {% for name, sport in registrants.items() %}
-        name: {{ name }}<br>
-        sport: {{ sport }}<br>
+    {% for u in registrants %}
+    name: {{ u.name }}<br>
+    sport: {{ u.sport }}<br>
     {% endfor %}
+
 </body>
+
 </html>

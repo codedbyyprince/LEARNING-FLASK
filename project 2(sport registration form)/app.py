@@ -1,40 +1,44 @@
 from flask import Flask, render_template, request
-#importing modules
+from models import db, User
 
-app = Flask (__name__) #initializing flask app
+app = Flask(__name__)
 
+SPORTS = ["Basketball", "Soccer", "Cricket"]
 
-SPORTS = [              # sports list
-    "Basketball",
-    "Soccer",
-    "Cricket"
-]
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db.init_app(app)
 
-REGISTRAINTS = {}
+with app.app_context():
+    db.create_all()
 
-
-@app.route('/')          #route for homepage
+@app.route('/')
 def index():
-    return render_template('index.html', sports = SPORTS)
+    return render_template('index.html', sports=SPORTS)
 
-@app.route('/register', methods=['POST'])   #route for registration form 
+@app.route('/register', methods=['POST'])
 def register():
     name = request.form.get("name")
     if not name:
-        return render_template('error.html', message="Name missing.") #error handling for name
-    
+        return render_template('error.html', message="Name missing.")
     sport = request.form.get("sport")
     if not sport:
-        return render_template('error.html', message="Sport missing") #error handling for sport
+        return render_template('error.html', message="Sport missing")
     if sport not in SPORTS:
-        return render_template('error.html', message="Invalid sport selected.") #error handling for invalid sport
-    
-    REGISTRAINTS[name] = sport
-    return render_template('success.html', name=name, sport=sport) #success page
+        return render_template('error.html', message="Invalid sport selected.")
+
+    # Save to database instead of dict
+    new_user = User(name=name, sport=sport)
+    db.session.add(new_user)
+    db.session.commit()
+
+    return render_template('success.html', name=name, sport=sport)
 
 @app.route('/registrants')
 def registrants():
-    return render_template('registrants.html', registrants=REGISTRAINTS) #route to display all registrants
+    # fetch from database instead of dict
+    all_users = User.query.all()
+    return render_template('registrants.html', registrants=all_users)
 
-if __name__ == '__main__': #running the app
+if __name__ == '__main__':
     app.run(debug=True)
