@@ -4,13 +4,17 @@
     <h1>Books</h1>
     <ul>
       {% for book in books %}
-        <li>{{ book.title }}</li>
+      <h2>{{ book.title }}</h2>
+        <form action="/cart" method="POST">
+          <input name="id" value="{{ book.id }}" type="hidden">
+          <button type="submit">Add to Cart</button>
+        </form>
       {% endfor %}
     </ul>
-
+<!-- 
     <form action="/add" method="POST">
       <input type="text" name="title" placeholder="Book title">
       <button type="submit">Add</button>
-    </form>
+    </form> -->
   </body>
 </html>
