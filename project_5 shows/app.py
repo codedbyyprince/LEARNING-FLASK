@@ -26,3 +26,5 @@ def index():
     return render_template('index.html', shows=shows)
 
 @app.route("/favorites" , methods=["GET", "POST"])
+def favorites():
+    pass
