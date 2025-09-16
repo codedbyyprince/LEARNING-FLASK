@@ -1,0 +1,15 @@
+🚀 Learning Flask – My Hands-On Journey
+
+A collection of small but meaningful Flask projects that took me from zero to building real web apps with databases.
+
+Flask was not love at first sight.
+I broke apps, saw endless errors, and PostgreSQL almost scared me off.
+But one project at a time, everything clicked. This repo is the evidence.
+
+🗂 Projects Inside
+#	Project	Highlights
+1	Hello Flask	My first “Hello, World” on a browser. Tiny but magical.
+2	Sports Registration	Handling forms & POST requests. Realising Flask can capture data.
+3	Login Page	Sessions + cookies = understanding user state.
+4	Shopping Cart	Adding/removing items with sessions. Feels like a mini e-commerce app.
+5	Shows App	Search shows/movies in a PostgreSQL DB. First full-stack-style project.
