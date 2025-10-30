@@ -1,3 +1,22 @@
-flaskenv
-venv
-__pycache__
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+flaskenv/
+venv/
+env/
+ENV/
+
+# Flask specific
+instance/
+.webassets-cache
+flask_session/
+
+# VS Code
+.vscode/
+
+# Environment variables
+.env
+.flaskenv
